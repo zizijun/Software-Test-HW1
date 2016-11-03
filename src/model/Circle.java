@@ -1,6 +1,8 @@
-package Test1;
+package model;
 
-public class Cricle {
+public class Circle implements CircleChecker{
+	
+	private CircleChecker checker;
 	/**
 	 * @Title: isInCircle
 	 * @Description: TODO judge if a node in a Circle
@@ -11,8 +13,9 @@ public class Cricle {
 	 * @param r  radius
 	 * @return
 	 */
+	@Override
 	public int isInCircle(double cx, double cy, double nx, double ny, double r) {
-		if (r < 0) {
+		if (r <= 0) {
 			return -1;
 		}
 		double gapX = (cx - nx) * (cx - nx);
@@ -40,7 +43,7 @@ public class Cricle {
 	 * @return
 	 */
 	public double tangent (double cx, double cy, double nx, double ny, double r){
-		int result = isInCircle(cx, cy, nx, ny, r);
+		int result = checker.isInCircle(cx, cy, nx, ny, r);
 		double tangent = 0d;
 		switch (result) {
 		case 2:
@@ -57,5 +60,14 @@ public class Cricle {
 		}
 		return tangent;
 	}
+
+	public CircleChecker getChecker() {
+		return checker;
+	}
+
+	public void setChecker(CircleChecker checker) {
+		this.checker = checker;
+	}
+
 
 }

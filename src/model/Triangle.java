@@ -1,25 +1,19 @@
-package Test1;
+package model;
 
-public class Triangle {
+public class Triangle implements TriangleChecker{
 
 	// three edges
 	private double a;
 	private double b;
 	private double c;
+	private TriangleChecker checker;
+	
+	
 
 	public Triangle() {
 		this.a = 0;
 		this.b = 0;
 		this.c = 0;
-	}
-
-	public Triangle(double a, double b, double c) throws Exception {
-		if (!isTriangle(a, b, c)) {
-			throw new Exception("These three numbers can not form a triangle!");
-		}
-		this.a = a;
-		this.b = b;
-		this.c = c;
 	}
 
 	/**
@@ -30,6 +24,7 @@ public class Triangle {
 	 * @param c
 	 * @return
 	 */
+	@Override
 	public boolean isTriangle(double a, double b, double c) {
 		if (a > 0 && b > 0 && c > 0 && (a + b > c) && (a + c > b) && (b + c > a)) {
 			return true;
@@ -46,7 +41,7 @@ public class Triangle {
 	 * @return double area
 	 */
 	public double getArea(double a, double b, double c) {
-		if (!isTriangle(a, b, c)) {
+		if (!checker.isTriangle(a, b, c)) {
 			return -1d; // can construct a triangle
 		}
 
@@ -81,5 +76,14 @@ public class Triangle {
 	public void setC(double c) {
 		this.c = c;
 	}
+
+	public TriangleChecker getChecker() {
+		return checker;
+	}
+
+	public void setChecker(TriangleChecker checker) {
+		this.checker = checker;
+	}
+	
 
 }
