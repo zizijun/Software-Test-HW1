@@ -13,7 +13,7 @@ import org.junit.Test;
 import model.Circle;
 import model.CircleChecker;
 
-public class CircleTest {
+public class CirclePairwiseTest {
 	
 	Circle circle = null;
 	CircleChecker checker;
@@ -103,6 +103,5 @@ public class CircleTest {
 		Assert.assertEquals(-1, (int)circle.tangent(0, 0, 0, 0, -1));
 		EasyMock.verify(checker);
 	}
-	
 
 }

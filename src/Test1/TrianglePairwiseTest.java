@@ -1,3 +1,4 @@
+
 package Test1;
 
 import static org.junit.Assert.*;
@@ -16,7 +17,7 @@ import model.Triangle;
 import model.TriangleChecker;
 
 
-public class TriangleTest {
+public class TrianglePairwiseTest {
 	
 	final Triangle triangle = new Triangle();
 	TriangleChecker checker;
@@ -54,7 +55,7 @@ public class TriangleTest {
 		boolean result = triangle.isTriangle(1, -1, 1);
 		assertEquals(false, result);
 	}
-
+	
 	@Test
 	public final void testIsTriangle4() {
 		boolean result = triangle.isTriangle(1, 1, -1);
@@ -131,7 +132,7 @@ public class TriangleTest {
 		checker = EasyMock.createMock(TriangleChecker.class);
 		
 		//设定 Mock 对象的预期行为和输出
-		EasyMock.expect(checker.isTriangle(-1, -1, -1)).andReturn(false).times(1);
+		EasyMock.expect(checker.isTriangle(5, 4, 3)).andReturn(true).times(1);
 		
 		//将 Mock 对象切换到 Replay 状态
 		EasyMock.replay(checker);
@@ -140,57 +141,57 @@ public class TriangleTest {
 		triangle.setChecker(checker);;
 		
 		//对 Mock 对象的行为进行验证
-		Assert.assertEquals(-1, (int)triangle.getArea(-1, -1, -1));
+		Assert.assertEquals(6, (int)triangle.getArea(5, 4, 3));
 		EasyMock.verify(checker);
 	}
 	
 	@Test
 	public final void testGetArea2() {
 		checker = EasyMock.createMock(TriangleChecker.class);
-		EasyMock.expect(checker.isTriangle(-1, -1, 0)).andReturn(false).times(1);
+		EasyMock.expect(checker.isTriangle(-1, 1, 1)).andReturn(false).times(1);
 		EasyMock.replay(checker);
 		triangle.setChecker(checker);;
-		Assert.assertEquals(-1, (int)triangle.getArea(-1, -1, 0));
+		Assert.assertEquals(-1, (int)triangle.getArea(-1, 1, 1));
 		EasyMock.verify(checker);
 	}
 	
 	@Test
 	public final void testGetArea3() {
 		checker = EasyMock.createMock(TriangleChecker.class);
-		EasyMock.expect(checker.isTriangle(-1, -1, -1)).andReturn(false).times(1);
+		EasyMock.expect(checker.isTriangle(1, -1, 1)).andReturn(false).times(1);
 		EasyMock.replay(checker);
 		triangle.setChecker(checker);;
-		Assert.assertEquals(-1, (int)triangle.getArea(-1, -1, -1));
+		Assert.assertEquals(-1, (int)triangle.getArea(1, -1, 1));
 		EasyMock.verify(checker);
 	}
 	
 	@Test
 	public final void testGetArea4() {
 		checker = EasyMock.createMock(TriangleChecker.class);
-		EasyMock.expect(checker.isTriangle(-1, 0, -1)).andReturn(false).times(1);
+		EasyMock.expect(checker.isTriangle(1, 1, -1)).andReturn(false).times(1);
 		EasyMock.replay(checker);
 		triangle.setChecker(checker);;
-		Assert.assertEquals(-1, (int)triangle.getArea(-1, 0, -1));
+		Assert.assertEquals(-1, (int)triangle.getArea(1, 1, -1));
 		EasyMock.verify(checker);
 	}
 	
 	@Test
 	public final void testGetArea5() {
 		checker = EasyMock.createMock(TriangleChecker.class);
-		EasyMock.expect(checker.isTriangle(-1, 0, 0)).andReturn(false).times(1);
+		EasyMock.expect(checker.isTriangle(-1, -1, 1)).andReturn(false).times(1);
 		EasyMock.replay(checker);
 		triangle.setChecker(checker);;
-		Assert.assertEquals(-1, (int)triangle.getArea(-1, 0, 0));
+		Assert.assertEquals(-1, (int)triangle.getArea(-1, -1, 1));
 		EasyMock.verify(checker);
 	}
 	
 	@Test
 	public final void testGetArea6() {
 		checker = EasyMock.createMock(TriangleChecker.class);
-		EasyMock.expect(checker.isTriangle(-1, 0, 1)).andReturn(false).times(1);
+		EasyMock.expect(checker.isTriangle(1, -1, -1)).andReturn(false).times(1);
 		EasyMock.replay(checker);
 		triangle.setChecker(checker);;
-		Assert.assertEquals(-1, (int)triangle.getArea(-1, 0, 1));
+		Assert.assertEquals(-1, (int)triangle.getArea(1, -1, -1));
 		EasyMock.verify(checker);
 	}
 	
@@ -206,73 +207,43 @@ public class TriangleTest {
 	@Test
 	public final void testGetArea8() {
 		checker = EasyMock.createMock(TriangleChecker.class);
-		EasyMock.expect(checker.isTriangle(-1, 1, 0)).andReturn(false).times(1);
+		EasyMock.expect(checker.isTriangle(-1, -1, -1)).andReturn(false).times(1);
 		EasyMock.replay(checker);
 		triangle.setChecker(checker);;
-		Assert.assertEquals(-1, (int)triangle.getArea(-1, 1, 0));
+		Assert.assertEquals(-1, (int)triangle.getArea(-1, -1, -1));
 		EasyMock.verify(checker);
 	}
 	@Test
 	public final void testGetArea9() {
 		checker = EasyMock.createMock(TriangleChecker.class);
-		EasyMock.expect(checker.isTriangle(-1, 1, 1)).andReturn(false).times(1);
+		EasyMock.expect(checker.isTriangle(0, 1, 1)).andReturn(false).times(1);
 		EasyMock.replay(checker);
 		triangle.setChecker(checker);;
-		Assert.assertEquals(-1, (int)triangle.getArea(-1, 1, 1));
+		Assert.assertEquals(-1, (int)triangle.getArea(0, 1, 1));
 		EasyMock.verify(checker);
 	}
 	@Test
 	public final void testGetArea10() {
 		checker = EasyMock.createMock(TriangleChecker.class);
-		EasyMock.expect(checker.isTriangle(0, -1, -1)).andReturn(false).times(1);
+		EasyMock.expect(checker.isTriangle(1, 0, 1)).andReturn(false).times(1);
 		EasyMock.replay(checker);
 		triangle.setChecker(checker);;
-		Assert.assertEquals(-1, (int)triangle.getArea(0, -1, -1));
+		Assert.assertEquals(-1, (int)triangle.getArea(1, 0, 1));
 		EasyMock.verify(checker);
 	}
 	
 	@Test
 	public final void testGetArea11() {
 		checker = EasyMock.createMock(TriangleChecker.class);
-		EasyMock.expect(checker.isTriangle(0, -1, 0)).andReturn(false).times(1);
+		EasyMock.expect(checker.isTriangle(1, 1, 0)).andReturn(false).times(1);
 		EasyMock.replay(checker);
 		triangle.setChecker(checker);;
-		Assert.assertEquals(-1, (int)triangle.getArea(0, -1, 0));
+		Assert.assertEquals(-1, (int)triangle.getArea(1, 1, 0));
 		EasyMock.verify(checker);
 	}
 	
 	@Test
 	public final void testGetArea12() {
-		checker = EasyMock.createMock(TriangleChecker.class);
-		EasyMock.expect(checker.isTriangle(0, -1, 1)).andReturn(false).times(1);
-		EasyMock.replay(checker);
-		triangle.setChecker(checker);;
-		Assert.assertEquals(-1, (int)triangle.getArea(0, -1, 1));
-		EasyMock.verify(checker);
-	}
-	
-	@Test
-	public final void testGetArea13() {
-		checker = EasyMock.createMock(TriangleChecker.class);
-		EasyMock.expect(checker.isTriangle(0, 0, -1)).andReturn(false).times(1);
-		EasyMock.replay(checker);
-		triangle.setChecker(checker);;
-		Assert.assertEquals(-1, (int)triangle.getArea(0, 0, -1));
-		EasyMock.verify(checker);
-	}
-	
-	@Test
-	public final void testGetArea14() {
-		checker = EasyMock.createMock(TriangleChecker.class);
-		EasyMock.expect(checker.isTriangle(0, 0, 0)).andReturn(false).times(1);
-		EasyMock.replay(checker);
-		triangle.setChecker(checker);;
-		Assert.assertEquals(-1, (int)triangle.getArea(0, 0, 0));
-		EasyMock.verify(checker);
-	}
-	
-	@Test
-	public final void testGetArea15() {
 		checker = EasyMock.createMock(TriangleChecker.class);
 		EasyMock.expect(checker.isTriangle(0, 0, 1)).andReturn(false).times(1);
 		EasyMock.replay(checker);
@@ -282,74 +253,7 @@ public class TriangleTest {
 	}
 	
 	@Test
-	public final void testGetArea16() {
-		checker = EasyMock.createMock(TriangleChecker.class);
-		EasyMock.expect(checker.isTriangle(0, 1, -1)).andReturn(false).times(1);
-		EasyMock.replay(checker);
-		triangle.setChecker(checker);;
-		Assert.assertEquals(-1, (int)triangle.getArea(0, 1, -1));
-		EasyMock.verify(checker);
-	}
-	
-	@Test
-	public final void testGetArea17() {
-		checker = EasyMock.createMock(TriangleChecker.class);
-		EasyMock.expect(checker.isTriangle(0, 1, 0)).andReturn(false).times(1);
-		EasyMock.replay(checker);
-		triangle.setChecker(checker);;
-		Assert.assertEquals(-1, (int)triangle.getArea(0, 1, 0));
-		EasyMock.verify(checker);
-	}
-
-	@Test
-	public final void testGetArea18() {
-		checker = EasyMock.createMock(TriangleChecker.class);
-		EasyMock.expect(checker.isTriangle(0, 1, 1)).andReturn(false).times(1);
-		EasyMock.replay(checker);
-		triangle.setChecker(checker);;
-		Assert.assertEquals(-1, (int)triangle.getArea(0, 1, 1));
-		EasyMock.verify(checker);
-	}
-	
-	@Test
-	public final void testGetArea19() {
-		checker = EasyMock.createMock(TriangleChecker.class);
-		EasyMock.expect(checker.isTriangle(1, -1, -1)).andReturn(false).times(1);
-		EasyMock.replay(checker);
-		triangle.setChecker(checker);;
-		Assert.assertEquals(-1, (int)triangle.getArea(1, -1, -1));
-		EasyMock.verify(checker);
-	}
-	@Test
-	public final void testGetArea20() {
-		checker = EasyMock.createMock(TriangleChecker.class);
-		EasyMock.expect(checker.isTriangle(1, -1, 0)).andReturn(false).times(1);
-		EasyMock.replay(checker);
-		triangle.setChecker(checker);;
-		Assert.assertEquals(-1, (int)triangle.getArea(1, -1, 0));
-		EasyMock.verify(checker);
-	}
-	@Test
-	public final void testGetArea21() {
-		checker = EasyMock.createMock(TriangleChecker.class);
-		EasyMock.expect(checker.isTriangle(1, -1, 1)).andReturn(false).times(1);
-		EasyMock.replay(checker);
-		triangle.setChecker(checker);;
-		Assert.assertEquals(-1, (int)triangle.getArea(1, -1, 1));
-		EasyMock.verify(checker);
-	}
-	
-	@Test
-	public final void testGetArea22() {
-		checker = EasyMock.createMock(TriangleChecker.class);
-		EasyMock.expect(checker.isTriangle(1, 0, -1)).andReturn(false).times(1);
-		EasyMock.replay(checker);
-		triangle.setChecker(checker);;
-		Assert.assertEquals(-1, (int)triangle.getArea(1, 0, -1));
-		EasyMock.verify(checker);
-	}
-	@Test
-	public final void testGetArea23() {
+	public final void testGetArea13() {
 		checker = EasyMock.createMock(TriangleChecker.class);
 		EasyMock.expect(checker.isTriangle(1, 0, 0)).andReturn(false).times(1);
 		EasyMock.replay(checker);
@@ -357,52 +261,28 @@ public class TriangleTest {
 		Assert.assertEquals(-1, (int)triangle.getArea(1, 0, 0));
 		EasyMock.verify(checker);
 	}
+	
 	@Test
-	public final void testGetArea24() {
+	public final void testGetArea14() {
 		checker = EasyMock.createMock(TriangleChecker.class);
-		EasyMock.expect(checker.isTriangle(1, 0, 1)).andReturn(false).times(1);
+		EasyMock.expect(checker.isTriangle(0, 1, 0)).andReturn(false).times(1);
 		EasyMock.replay(checker);
 		triangle.setChecker(checker);;
-		Assert.assertEquals(-1, (int)triangle.getArea(1, 0, 1));
+		Assert.assertEquals(-1, (int)triangle.getArea(0, 1, 0));
 		EasyMock.verify(checker);
 	}
+	
 	@Test
-	public final void testGetArea25() {
+	public final void testGetArea15() {
 		checker = EasyMock.createMock(TriangleChecker.class);
-		EasyMock.expect(checker.isTriangle(1, 1, -1)).andReturn(false).times(1);
+		EasyMock.expect(checker.isTriangle(0, 0, 0)).andReturn(false).times(1);
 		EasyMock.replay(checker);
 		triangle.setChecker(checker);;
-		Assert.assertEquals(-1, (int)triangle.getArea(1, 1, -1));
+		Assert.assertEquals(-1, (int)triangle.getArea(0, 0, 0));
 		EasyMock.verify(checker);
 	}
-	@Test
-	public final void testGetArea26() {
-		checker = EasyMock.createMock(TriangleChecker.class);
-		EasyMock.expect(checker.isTriangle(1, 1, 0)).andReturn(false).times(1);
-		EasyMock.replay(checker);
-		triangle.setChecker(checker);;
-		Assert.assertEquals(-1, (int)triangle.getArea(1, 1, 0));
-		EasyMock.verify(checker);
-	}
-	@Test
-	public final void testGetArea27() {
-		// 使用 EasyMock 生成 Mock 对象
-		checker = EasyMock.createMock(TriangleChecker.class);
-		
-		//设定 Mock 对象的预期行为和输出
-		EasyMock.expect(checker.isTriangle(3, 4, 5)).andReturn(true).times(1);
-		
-		//将 Mock 对象切换到 Replay 状态
-		EasyMock.replay(checker);
-		
-		//调用 Mock 对象方法进行单元测试
-		triangle.setChecker(checker);;
-		
-		//对 Mock 对象的行为进行验证
-		Assert.assertEquals(6, (int)triangle.getArea(3, 4, 5));
-		EasyMock.verify(checker);
-		
-	}
+	
+	
 	
 	@Mock
 	public void isTriangle_stub1(final double a, final double b, final double c) {

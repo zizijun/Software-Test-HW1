@@ -3,18 +3,8 @@ package model;
 public class Triangle implements TriangleChecker{
 
 	// three edges
-	private double a;
-	private double b;
-	private double c;
+	
 	private TriangleChecker checker;
-	
-	
-
-	public Triangle() {
-		this.a = 0;
-		this.b = 0;
-		this.c = 0;
-	}
 
 	/**
 	 * @Title: isTriangle
@@ -42,7 +32,7 @@ public class Triangle implements TriangleChecker{
 	 */
 	public double getArea(double a, double b, double c) {
 		if (!checker.isTriangle(a, b, c)) {
-			return -1d; // can construct a triangle
+			return -1d; // cannot construct a triangle
 		}
 
 		double p = 0;
@@ -53,29 +43,6 @@ public class Triangle implements TriangleChecker{
 		return area;
 	}
 
-	public double getA() {
-		return a;
-	}
-
-	public void setA(double a) {
-		this.a = a;
-	}
-
-	public double getB() {
-		return b;
-	}
-
-	public void setB(double b) {
-		this.b = b;
-	}
-
-	public double getC() {
-		return c;
-	}
-
-	public void setC(double c) {
-		this.c = c;
-	}
 
 	public TriangleChecker getChecker() {
 		return checker;
